@@ -1,0 +1,18 @@
+#   type    menu/item      operation/parent  label                              command/menu                activation    install?
+menu    RXmenu       topMenu         ""                                      ""                          ""                      "" 
+item    topMenu         cascade         "RDataXMan"                                 RXmenu                   ""                      ""
+menu    seMenu      RXmenu ""                                    ""                          ""                  ""
+item    seMenu      command         "a) Select Datasource"                setupwizard                    ""                      ""
+item    seMenu      command         "b) Save Profile"                saveDB                    ""                      ""
+item    seMenu      command         "c) Change Table"                pickTable                    ""                      ""
+item    RXmenu   cascade     "1) Setup"               seMenu                  ""                      ""
+menu    procMenu      RXmenu ""                                    ""                          ""                  ""
+item    procMenu      command         "a) Generate Inclusion"                genIncUI                    ""                      ""
+item    procMenu      command         "b) Generate Variable"                genVarUI                    ""                      ""
+item    procMenu      command         "c) Extract Data"                extractUI                    ""                      ""
+item    RXmenu   cascade     "2) Functions"               procMenu                  ""                      ""
+menu    extraMenu      RXmenu ""                                    ""                          ""                  ""
+item    extraMenu      command         "a) Ezy De-Identifier"                maskingtool                    ""                      ""
+item    RXmenu   cascade     "3) DASA Extras"               extraMenu                  ""                      ""
+
+

@@ -1,0 +1,6 @@
+# last modified 2015-12-08
+
+import(stats, Rcmdr, RDataXMan, rgl, tkrplot)
+importFrom("tcltk", "tkbutton")
+importFrom("graphics", "plot", "title")
+exportPattern("^[^\\.]")
