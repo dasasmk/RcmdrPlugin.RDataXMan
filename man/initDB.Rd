@@ -2,8 +2,6 @@
 \name{initDB}
 \alias{initDB}
 \title{Data Setup}
-\usage{
-}
 \arguments{
   \item{Username}{A character string with the username when you need to access to server, i.e., ORE, Oracle and SQL. The default value is "".}
   
@@ -17,8 +15,7 @@
 \description{
   Setup the information to access the database.
 }
-\details{
-}
+
 
 
 

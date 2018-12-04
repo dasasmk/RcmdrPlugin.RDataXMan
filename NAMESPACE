@@ -1,6 +1,8 @@
 # last modified 2015-12-08
 
-import(stats, Rcmdr, RDataXMan, rgl, tkrplot)
+import(stats, Rcmdr, RDataXMan, rgl, tkrplot, pracma)
 importFrom("tcltk", "tkbutton")
 importFrom("graphics", "plot", "title")
+importFrom("shiny", "runGitHub")
+importFrom("tcltk" , "tk_choose.dir")
 exportPattern("^[^\\.]")

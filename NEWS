@@ -1,5 +1,5 @@
-Changes to Version 1.0.8
+Changes to Version 1.0.11
 
   o  Initial Release
+  o  Please note for Mac system XQuartz must be installed for correct operation of the package, this can be downloaded from https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
 
-For changes to earlier version see the package CHANGES file.

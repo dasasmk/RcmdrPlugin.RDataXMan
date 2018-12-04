@@ -21,14 +21,44 @@
     }
 }
 
+#' Test x is identical to empty string
+#' @param x object to test
+#' @return Returns boolean
 is.charv <- function(x) identical(x, "")
+
+#' Test x is identical to NA
+#' @param x object to test
+#' @return Returns boolean
 is.charv2 <- function(x) identical(x, "NA")
+
+#' Test x is identical to char(0)
+#' @param x object to test
+#' @return Returns boolean
 is.charv3 <- function(x) identical(x, character(0))
+
+#' Test x is identical to NULL
+#' @param x object to test
+#' @return Returns boolean
 is.charv4 <- function(x) identical(x, NULL)
+
+#' Test x is not equal to TRUE, FALSE, Union or Intersection
+#' @param x object to test
+#' @return Returns boolean
 is.charv5 <- function(x) !(identical(x, "TRUE") | identical(x, "FALSE") | identical(x, "Union") | identical(x, "Intersection")) 
+
+#' Test x is identical to int0
+#' @param x object to test
+#' @return Returns boolean
 is.charv6 <- function(x) identical(x, integer(0))
+
+#' Test x is logical
+#' @param x object to test
+#' @return Returns boolean
 is.log1 <- function(x) is.logical(x)
 
+#' Build string with quote marks
+#' @param strings A string to add quotation marks to.
+#' @return Returns input string collapsed with quotemarks
 QuotationMarkAdd <- function(strings){
   tmp <- strsplit(strings,",",fixed=T)
   tmp <- unlist(tmp)
@@ -39,6 +69,10 @@ QuotationMarkAdd <- function(strings){
   return(new.strings)
 }	
 
+#' Writes a file intended to save the execution string to disk
+#' @param filename name of file to write
+#' @param textString string of R commands to write
+#' @return None
 saveJob <-function(filename,textString)
 {
 	fileout<-file(filename)
@@ -46,6 +80,8 @@ saveJob <-function(filename,textString)
 	close(fileout)
 }
 
+#' Save the current database profile in the research folder
+#' @return None	
 saveDB <- function() {
 
 	if(getRcmdr("appconfig")==FALSE)
@@ -60,6 +96,8 @@ saveDB <- function() {
 	tkmessageBox(title = "RDataXMan", message = "Profile saved in research folder", icon = "info", type = "ok")
 }
 
+#' Automatically load a passed saved database profile in the research folder
+#' @return None	
 loadDB <- function() {
 	
 	tkmessageBox(title = "RDataXMan", message = "Automatically loaded research settings from profile file", icon = "info", type = "ok")
@@ -81,6 +119,8 @@ loadDB <- function() {
 	putRcmdr("appconfig",e$db[12])
 }
 
+#' Create the UI to establish the current working directory
+#' @return None	
 initwk <- function(){
 
     initializeDialog(title=gettextRcmdr("Set Working Directoy"))
@@ -96,7 +136,7 @@ initwk <- function(){
         closeDialog()
         val1 <- (tclvalue(a))
 		
-		workingDIR <<- val1
+		workingDIR <- val1
 		command <- paste0("setwd(\"",val1,"\")")
 		doItAndPrint(command)
         command <- paste0("initWkdir(\"",val1,"\")")
@@ -112,6 +152,8 @@ initwk <- function(){
 	onOK()
     }
 
+#' Display the UI to set the research base directory
+#' @return None		
 setrschfld <- function(){
 
     initializeDialog(title=gettextRcmdr("Set Research Directoy"))
@@ -184,9 +226,10 @@ setrschfld <- function(){
 	tkgrid.configure(bEntry, sticky="w")
     dialogSuffix(rows=4, columns=2, focus=bEntry)
     }
-	
+
+#' Display UI to select a new database table
+#' @return None		
 pickTable <- function(){
-	library(pracma)
 	
 	if(getRcmdr("appconfig")==FALSE)
 	{
@@ -249,9 +292,10 @@ pickTable <- function(){
     tkgrid(buttonsFrame, sticky="w", columnspan=2)
     dialogSuffix()
     }
-	
+
+#' Display the generate inclusion UI Window
+#' @return None		
 genIncUI <- function(){
-	library(pracma)
 	
 	if(getRcmdr("appconfig2")==FALSE)
 	{
@@ -365,6 +409,8 @@ genIncUI <- function(){
     dialogSuffix(rows=4, columns=2)
     }
 
+#' Display the generate variable UI Window
+#' @return None		
 genVarUI <- function(){
 
 	if(getRcmdr("appconfig2")==FALSE)
@@ -472,6 +518,8 @@ genVarUI <- function(){
     dialogSuffix(rows=4, columns=2)
     }
 	
+#' Display the Extraction UI Window
+#' @return None		
 extractUI <- function(){
 	if(getRcmdr("appconfig2")==FALSE)
 	{
@@ -568,16 +616,18 @@ extractUI <- function(){
 	dialogSuffix()
     }
 	
+#' Launch masking tool from GitHub
+#' @return None	
 maskingtool <- function() {
 	source("https://raw.githubusercontent.com/dasasmk/EzyDeident/master/setup.R")
-	library(shiny)
 	runGitHub("EzyDeident", "dasasmk",launch.browser=TRUE,port=9999) 
 }
 
+#' Display the wizard to identify the users data file/database connection
+#' @return None	
 setupwizard <- function()
 {
-  library(pracma)
-  
+
   putRcmdr("useDB","")
   putRcmdr("useORE","")
   putRcmdr("conusername","")
@@ -670,6 +720,8 @@ setupwizard <- function()
   print(getRcmdr("condatabase"))  
 }
 
+#' Show the database credential dialog
+#' @return None	
 initDB <- function(){
 
     initializeDialog(title=gettextRcmdr("Data Setup"))
@@ -718,7 +770,9 @@ initDB <- function(){
 	tkgrid.configure(dEntry, sticky="w")
     dialogSuffix(rows=4, columns=2, focus=aEntry)
     }
-	
+
+#' Create the UI to establish an ORE connection
+#' @return None	
 initORE <- function(){
 
     initializeDialog(title=gettextRcmdr("Data Setup"))
